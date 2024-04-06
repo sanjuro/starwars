@@ -1,0 +1,67 @@
+const userService = require('../../services/userService');
+const User = require('../../models/User');
+
+// Mock user data for testing
+const userData = {
+  firstName: 'Test',
+  lastName: 'User',
+  email: 'test@example.com',
+  password: 'password123'
+};
+
+describe('User Service', () => {
+  // Clear the User collection in the database before each test
+  beforeEach(async () => {
+    await User.deleteMany();
+  });
+
+  // Test getting user details
+  describe('getUserDetails', () => {
+    it('should return user details', async () => {
+      // Create a user in the database
+      const user = await User.create(userData);
+
+      // Call the getUserDetails function from the userService
+      const userDetails = await userService.getUserDetails(user._id);
+
+      // Assert that the user details returned match the user created
+      expect(userDetails.firstName).toEqual(userData.firstName);
+      expect(userDetails.lastName).toEqual(userData.lastName);
+      expect(userDetails.email).toEqual(userData.email);
+    });
+
+    it('should return null if user does not exist', async () => {
+      // Call the getUserDetails function with a non-existent user ID
+      const userDetails = await userService.getUserDetails('nonExistentUserId');
+
+      // Assert that null is returned
+      expect(userDetails).toBeNull();
+    });
+  });
+
+  // Test updating user details
+  describe('updateUserDetails', () => {
+    it('should update user details', async () => {
+      // Create a user in the database
+      const user = await User.create(userData);
+
+      // New user details to update
+      const updates = { firstName: 'Updated', lastName: 'User' };
+
+      // Call the updateUserDetails function from the userService
+      const updatedUser = await userService.updateUserDetails(user._id, updates);
+
+      // Assert that the updated user details match the updates
+      expect(updatedUser.firstName).toEqual(updates.firstName);
+      expect(updatedUser.lastName).toEqual(updates.lastName);
+    });
+
+    it('should return null if user does not exist', async () => {
+      // Call the updateUserDetails function with a non-existent user ID
+      const updatedUser = await userService.updateUserDetails('nonExistentUserId', {});
+
+      // Assert that null is returned
+      expect(updatedUser).toBeNull();
+    });
+  });
+});

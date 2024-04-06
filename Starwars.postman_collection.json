@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "e4e5989d-79fe-40c5-9c59-100ccb0babec",
+		"name": "Starwars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "801038"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjExYTY0NWZlMjc5YTkxNGEwMTAxNjQiLCJpYXQiOjE3MTI0MzY5NDgsImV4cCI6MTcxMjQ0MDU0OH0.xHefi6_d4bu-kVKuKbyJXSwHBM69tjlwdL-ec1q20E0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"6611a645fe279a914a010164\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2232ASDAS33",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjExYTY0NWZlMjc5YTkxNGEwMTAxNjQiLCJpYXQiOjE3MTI0Mzc0MDEsImV4cCI6MTcxMjQ0MTAwMX0.jxlFjHzwvwcK7VhRO8KQYkUuWyqtcdpDLitMsQJhBSs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/search?query=Luke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Luke"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
